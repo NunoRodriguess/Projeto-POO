@@ -1,0 +1,47 @@
+// Data,Comando,argumentos
+// Os argumentos são separados por um ";"
+// Comentários são possíveis, basta adcionar "//" na linha que é suposto ignorar
+// Exceção: Registar um Item tem um argumento a mais a dizer que tipo de item é: Bag,Tshirt,Sneaker
+// Yes para Premium, No para normal
+// Setup de Carriers não precisa de Login do admin, apenas as funções de registar items,Fazer encomendas etc.
+// Os valores Double devem aparecer separadas por um "."
+
+
+// Lista de Comandos:
+// SetupDate:LocalDate --> Serve para colocar uma Data de simulação
+// RegistarUtilizador:Email,Nome,Endreço,Nif,Password --> Regista um Utilizador
+// RegistarTransportadora:Nome,PremiumStatus,TaxaPequena,TaxaMédia,TaxaGrande --> Regista uma Transportadora
+// RegistarItem:Tipo(Bag,Tshirt,Sneaker);*resto dos argumentos
+// FazerEncomenda,Lista;
+// AlterarTransportadora,Nome;Status;TaxaPequena;TaxaMédia;TaxaGrande
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+// Fase Setup
+
+
+SetupDate,2023-05-05
+2023-05-05,RegistarUtilizador,admin;admin;admin;0;admin
+2023-05-05,RegistarTransportadora,Ups;No;0.08;0.05;0.03
+2023-05-05,RegistarTransportadora,CTT;No;0.1;0.05;0.05
+2023-05-05,RegistarTransportadora,Dhl;No;0.11;0.09;0.02
+2023-05-05,RegistarTransportadora,CTTExpresso;Yes;0.1;0.05;0.09
+
+//////////////////////////////////////////////////////////////////////////////////////
+// Fase Simulação
+
+2023-05-05,RegistarUtilizador,jhon@gmail.com;Jhon Doe;Boston;123456789;doe
+2023-05-05,RegistarUtilizador,marry@gmail.com;Marry Jane;New York;987654321;jane
+2023-05-05,RegistarUtilizador,jordan@gmail.com;Michael Jordan;Chicago;98123456;bull
+2023-05-05,RegistarUtilizador,jeff@gmail.com;Jeff Bezos;Austin;98123456;amazon
+2023-05-05,Login,marry@gmail.com;jane
+2023-05-05,RegistarItem,Bag;Cool Bag;Channel;200;5;12;12;2;Cotton;2010-10-10;No;Ups
+2023-05-05,Login,jhon@gmail.com;doe
+2023-05-05,RegistarItem,Tshirt;Cool T;Nike;100;5;S;Smooth;CTT
+2023-05-05,Login,jordan@gmail.com;bull
+2023-05-05,RegistarItem,Sneaker;Original Jordan Chicago;Jordan;1000;5;49;LACES;White and Red;1990-10-16;Yes;CTTExpresso
+2023-05-05,Login,jeff@gmail.com;amazon
+2023-05-10,FazerEncomenda,1;2
+2023-05-25,PassarTempo
